@@ -78,5 +78,10 @@ public class ContatoServiceImplTest {
 		assertEquals(contato, contatoService.saveContato(contato));
 	}
 
-
+//	@Test
+//	void testUpdateContato() throws Exception {
+//		Mockito.when(contatoRepository.existsByNome(contatoDto.getNome())).thenReturn(true);
+//		Mockito.when(contatoRepository.save(contato)).thenReturn(contato);
+//		assertEquals(contatoDto, contatoService.updateContato(1L, contatoDto));
+//	}
 }
