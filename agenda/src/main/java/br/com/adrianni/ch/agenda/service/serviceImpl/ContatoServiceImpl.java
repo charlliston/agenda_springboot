@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import br.com.adrianni.ch.agenda.model.Contato;
 import br.com.adrianni.ch.agenda.repository.ContatoRepository;
 import br.com.adrianni.ch.agenda.service.ContatoService;
-import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
 import javassist.NotFoundException;
 
 @Service
@@ -23,6 +22,13 @@ public class ContatoServiceImpl implements ContatoService {
 		List<Contato> todosContatos = contatoRepository.findAll();
 
 		return todosContatos;
+	}
+	
+	@Override
+	public Contato findContatoById(Long id) {
+		Contato contato = contatoRepository.findById(id).get();
+
+		return contato;
 	}
 
 	@Override
@@ -53,29 +59,15 @@ public class ContatoServiceImpl implements ContatoService {
 
 	@Override
 	public Contato saveContato(Contato contato) {
-		var c = new Contato();
-
-		c.setNome(contato.getNome());
-		c.setTelefone(contato.getTelefone());
-		c.setEmail(contato.getEmail());
-
-		contatoRepository.save(c);
-		return c;
+		contatoRepository.save(contato);
+		return contato;
 	}
 
 	@Override
-	public Contato updateContato(Long id, ContatoDto contatoDto) throws NotFoundException {
-		var c = contatoRepository.findById(id);
-
-		if (c.isPresent()) {
-			var contatoSave = c.get();
-			contatoSave.setNome(contatoDto.getNome());
-			contatoSave.setTelefone(contatoDto.getTelefone());
-			contatoSave.setEmail(contatoDto.getEmail());
-
-			contatoRepository.save(contatoSave);
-
-			return contatoSave;
+	public Contato updateContato(Contato contato) throws NotFoundException {
+		
+		if (verificarContato(contato)) {
+			return contatoRepository.save(contato);
 		} else {
 			throw new NotFoundException("Contato não encontrado");
 		}
@@ -87,5 +79,25 @@ public class ContatoServiceImpl implements ContatoService {
 
 		contatoRepository.delete(Contato);
 	}
+	
+	@Override
+	public void deleteContatoById(Long id) throws NotFoundException {
+		var c = contatoRepository.findById(id);
 
+		if (c.isPresent()) {
+			contatoRepository.deleteById(id);
+		} else {
+			throw new NotFoundException("Contato não encontrado");
+		}
+	}
+	
+	@Override
+	public boolean verificarContato(Contato contato) {
+
+		if (contatoRepository.existsByNome(contato.getNome())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

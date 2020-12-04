@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import br.com.adrianni.ch.agenda.model.Contato;
 import br.com.adrianni.ch.agenda.service.ContatoService;
-import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
+//import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
 import javassist.NotFoundException;
 
 @WebMvcTest
@@ -27,8 +27,8 @@ public class ContatoControllerTest {
 	@MockBean
 	private ContatoService contatoService;
 
-	@MockBean
-	private ContatoDto contatoDto;
+//	@MockBean
+//	private ContatoDto contatoDto;
 
 	private Contato contato;
 
@@ -76,11 +76,11 @@ public class ContatoControllerTest {
 		assertNotNull(contatoController.save(contato));
 	}
 
-	@Test
-	void testUpdate() throws NotFoundException {
-		Mockito.when(contatoService.updateContato(1L, contatoDto)).thenReturn(contato);
-
-		assertNotNull(contatoController.updateContato(1L, contatoDto));
-	}
+//	@Test
+//	void testUpdate() throws NotFoundException {
+//		Mockito.when(contatoService.updateContato(1L, contatoDto)).thenReturn(contato);
+//
+//		assertNotNull(contatoController.updateContato(1L, contatoDto));
+//	}
 
 }

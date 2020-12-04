@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.adrianni.ch.agenda.model.Contato;
 import br.com.adrianni.ch.agenda.repository.ContatoRepository;
-import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
+//import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
 import br.com.adrianni.ch.agenda.service.serviceImpl.ContatoServiceImpl;
 
 public class ContatoServiceImplTest {
@@ -25,8 +25,8 @@ public class ContatoServiceImplTest {
 	@Mock
 	private ContatoRepository contatoRepository;
 
-	@Mock
-	private ContatoDto contatoDto;
+//	@Mock
+//	private ContatoDto contatoDto;
 
 	private Contato contato;
 	private List<Contato> lista;

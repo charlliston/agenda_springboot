@@ -3,11 +3,12 @@ package br.com.adrianni.ch.agenda.service;
 import java.util.List;
 
 import br.com.adrianni.ch.agenda.model.Contato;
-import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
 import javassist.NotFoundException;
 
 public interface ContatoService {
 	public List<Contato> findAllContatos();
+	
+	public Contato findContatoById(Long id);
 
 	public List<Contato> findContatoByNome(String nome) throws Exception;
 	
@@ -15,8 +16,12 @@ public interface ContatoService {
 	
 	public Contato saveContato(Contato contato);
 	
-	public Contato updateContato(Long id, ContatoDto contatoDto) throws NotFoundException;
+	public Contato updateContato(Contato contato) throws NotFoundException;
 
 	public void deleteContatoByNome(String nome);
+	
+	public void deleteContatoById(Long id) throws NotFoundException;
+	
+	public boolean verificarContato(Contato contato);
 	
 }

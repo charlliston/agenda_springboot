@@ -3,7 +3,6 @@ package br.com.adrianni.ch.agenda.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.adrianni.ch.agenda.model.Contato;
-import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
 
 public interface ContatoRepository extends JpaRepository<Contato, Long> {
 

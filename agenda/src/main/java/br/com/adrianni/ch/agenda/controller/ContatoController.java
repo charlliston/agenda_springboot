@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.adrianni.ch.agenda.model.Contato;
 import br.com.adrianni.ch.agenda.service.ContatoService;
-import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
 import javassist.NotFoundException;
 
 @RestController
@@ -35,6 +34,11 @@ public class ContatoController {
 		return new ResponseEntity<List<Contato>>(todosContatos, HttpStatus.OK);
 	}
 
+	@GetMapping("/findById/{id}")
+	public ResponseEntity<?> findContatoById(@PathVariable("id") Long id) {
+		return new ResponseEntity<>(contatoService.findContatoById(id), HttpStatus.OK);
+	}
+	
 	@GetMapping("/findByNome/{nome}")
 	public ResponseEntity<?> findContatoByNome(@PathVariable("nome") String nome) throws Exception {
 		return new ResponseEntity<>(contatoService.findContatoByNome(nome), HttpStatus.OK);
@@ -50,12 +54,9 @@ public class ContatoController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(contatoService.saveContato(contato));
 	}
 
-	@PutMapping("/update/{id}")
-	public ResponseEntity<?> updateContato(@Valid @PathVariable("id") Long id, @RequestBody ContatoDto contatoDto)
-			throws NotFoundException {
-		contatoService.updateContato(id, contatoDto);
-
-		return new ResponseEntity<>("Contato atualizado com sucesso!", HttpStatus.OK);
+	@PutMapping("/update")
+	public ResponseEntity<?> updateContato(@RequestBody @Valid Contato contato) throws NotFoundException {
+		return ResponseEntity.status(HttpStatus.OK).body(contatoService.updateContato(contato));
 	}
 
 	@DeleteMapping("/deletebyname/{nome}")
