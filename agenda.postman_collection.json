@@ -40,6 +40,17 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET Contato By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}

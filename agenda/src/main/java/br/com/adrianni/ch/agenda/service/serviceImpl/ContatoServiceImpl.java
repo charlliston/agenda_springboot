@@ -1,6 +1,5 @@
 package br.com.adrianni.ch.agenda.service.serviceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,18 +32,7 @@ public class ContatoServiceImpl implements ContatoService {
 
 	@Override
 	public List<Contato> findContatoByNome(String nome) throws Exception {
-		List<Contato> contatos = new ArrayList<Contato>();
-
-		findAllContatos().forEach(c -> {
-			if (c.getNome().equals(nome)) {
-				contatos.add(c);
-			}
-		});
-
-		if (contatos.isEmpty()) {
-			throw new Exception("Nenhum contato encontrado para o nome: " + nome);
-		}
-		return contatos;
+				return this.contatoRepository.findByNomeContains(nome);
 	}
 
 	@Override
