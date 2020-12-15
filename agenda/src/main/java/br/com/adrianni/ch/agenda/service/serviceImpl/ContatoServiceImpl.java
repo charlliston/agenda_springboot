@@ -32,7 +32,8 @@ public class ContatoServiceImpl implements ContatoService {
 
 	@Override
 	public List<Contato> findContatoByNome(String nome) throws Exception {
-				return this.contatoRepository.findByNomeContains(nome);
+		
+		return this.contatoRepository.findByNomeContains(nome);
 	}
 
 	@Override

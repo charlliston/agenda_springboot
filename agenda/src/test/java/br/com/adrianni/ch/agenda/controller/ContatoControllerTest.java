@@ -15,8 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import br.com.adrianni.ch.agenda.model.Contato;
 import br.com.adrianni.ch.agenda.service.ContatoService;
-//import br.com.adrianni.ch.agenda.service.dto.ContatoDto;
-import javassist.NotFoundException;
 
 @WebMvcTest
 public class ContatoControllerTest {
@@ -26,9 +24,6 @@ public class ContatoControllerTest {
 
 	@MockBean
 	private ContatoService contatoService;
-
-//	@MockBean
-//	private ContatoDto contatoDto;
 
 	private Contato contato;
 

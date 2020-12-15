@@ -25,9 +25,6 @@ public class ContatoServiceImplTest {
 	@Mock
 	private ContatoRepository contatoRepository;
 
-//	@Mock
-//	private ContatoDto contatoDto;
-
 	private Contato contato;
 	private List<Contato> lista;
 
@@ -61,7 +58,9 @@ public class ContatoServiceImplTest {
 		lista.add(contato);
 		lista.add(contato);
 		lista.add(contato);
-		Mockito.when(contatoRepository.findAll()).thenReturn(lista);
+		
+		
+		Mockito.when(contatoRepository.findByNomeContains(contato.getNome())).thenReturn(lista);
 		assertEquals(lista, contatoService.findContatoByNome(contato.getNome()));
 	}
 
